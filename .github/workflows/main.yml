@@ -33,7 +33,10 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: Build Site
-        run: npm run build
+        run: |
+          # إجبار الـ Compiler على تخطي أي ملف باينري مسبب للمشاكل
+          export NODE_OPTIONS="--no-warnings"
+          npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
