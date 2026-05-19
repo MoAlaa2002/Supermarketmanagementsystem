@@ -29,16 +29,14 @@ jobs:
         with:
           node-version: 20
 
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
-
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: npm install
+
+      - name: Fix Tailwind Oxide Bug
+        run: rm -rf node_modules/@tailwindcss/oxide-linux-x64-gnu
 
       - name: Build
-        run: pnpm run build
+        run: npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
