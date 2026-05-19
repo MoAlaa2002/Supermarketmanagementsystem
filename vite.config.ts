@@ -17,9 +17,6 @@ function figmaAssetResolver() {
 }
 
 export default defineConfig({
-  // 👈 السطر ده اللي هيصلح مسارات وموقع جيت هاب بيجز
-  base: '/Supermarketmanagementsystem/', 
-
   plugins: [
     figmaAssetResolver(),
     // The React and Tailwind plugins are both required for Make, even if
