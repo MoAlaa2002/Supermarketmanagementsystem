@@ -24,24 +24,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node
-        uses: actions/setup-node@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: 20
+          bun-version: latest
 
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
+      - name: Install Dependencies
+        run: bun install
 
-      - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile --shamefully-hoist
-
-      - name: Fix Tailwind Oxide Bug
-        run: rm -rf node_modules/.pnpm/@tailwindcss+oxide-linux-x64-gnu*
-
-      - name: Build
-        run: pnpm run build
+      - name: Build Site
+        run: bun run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
